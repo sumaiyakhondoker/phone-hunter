@@ -19,14 +19,14 @@ const displayPhones = (phones,showAll) =>{
     else{
         showAllBtn.classList.add('hidden')
     }
-   
+
 
 if(!showAll){
     phones = phones.slice(0,12);
 }
-   
 
-        
+
+
 
     phones.forEach(phone =>{
         // console.log(phone);
@@ -43,9 +43,8 @@ if(!showAll){
         <h2 class="card-title text-3xl">${phone.phone_name}</h2>
         <p>There are many variations of passages of available, but the majority have suffered</p>
         <h2 class="card-title text-3xl">$999</h2>
-
         <div class="card-actions">
-        <button onclick= 'handleShowDetails("${phone.slug}") ;show_details_modal.showModal()'class="btn btn-success text-white">Show details</button>
+        <button onclick= 'handleShowDetails("${phone.slug}")' class="btn btn-success text-white">Show details</button>
         </div>
         </div>
         `;
@@ -53,6 +52,7 @@ if(!showAll){
         phoneContainer.appendChild(phoneDiv)
     });
     toggleLoading(false);
+
 
 }
 
@@ -84,7 +84,7 @@ const handleShowDetails = async (id) =>{
     const showDetailsContainer = document.getElementById('show-details-container')
     showDetailsContainer.innerHTML = `
     <div class = 'flex justify-center pt-5 mb-6'>
-    <img src="${phone.image}"/>
+    <img src="${phone.image}">
     </div>
     <h2 class ='text-3xl font-bold'>${phone.name}</h2>
     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
@@ -97,6 +97,9 @@ const handleShowDetails = async (id) =>{
     <p><span class = 'font-bold'>Brand: </span>${phone?.brand}</p>
     <p><span class = 'font-bold'>GPS: </span>${phone?.others?.GPS || 'No GPS available'}</p>
     `
+
+    // show modal
+    show_details_modal.showModal()
 }
 const handleShowAll = () =>{
     handleSearch(true);
